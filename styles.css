@@ -603,10 +603,7 @@ section:nth-child(even) {
 }
 
 /* Research Section */
-.research-categories,
-.papers-grid{
-    max-width: 800px;     /* adjust to match your timeline/about width */
-    margin: 0 auto;       /* centers it */
+.research-categories {
     display: flex;
     justify-content: center;
     gap: var(--spacing-md);
