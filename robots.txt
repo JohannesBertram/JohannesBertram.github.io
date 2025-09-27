@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Allow search engines to crawl all content
+# Add specific disallows if needed for private content
+
+# Sitemap location
+Sitemap: https://johannesbertram.github.io/sitemap.xml
+
+# Crawl-delay (optional - be respectful to search engines)
+Crawl-delay: 1
