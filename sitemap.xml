@@ -1,33 +1,17 @@
+---
+layout: none
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://johannesbertram.github.io/</loc>
-        <lastmod>2024-09-26</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://johannesbertram.github.io/blog/</loc>
-        <lastmod>2024-09-26</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://johannesbertram.github.io/blog/neural-architecture-search-explained.html</loc>
-        <lastmod>2024-09-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://johannesbertram.github.io/blog/interpretable-ai-healthcare.html</loc>
-        <lastmod>2024-08-28</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://johannesbertram.github.io/blog/federated-learning-privacy.html</loc>
-        <lastmod>2024-07-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+    {% assign pages = site.pages | where_exp: "p", "p.sitemap != false" %}
+    {% for page in pages %}
+        {% if page.url %}
+        <url>
+            <loc>{{ page.url | absolute_url }}</loc>
+            <lastmod>{{ page.date | default: site.time | date: "%Y-%m-%d" }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>{% if page.url == '/' %}1.0{% else %}0.6{% endif %}</priority>
+        </url>
+        {% endif %}
+    {% endfor %}
 </urlset>

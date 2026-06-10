@@ -467,15 +467,16 @@ function initDarkMode() {
 // ===== PERFORMANCE OPTIMIZATION =====
 function initPerformanceOptimizations() {
     // Preload critical resources
+    const toAbs = (p) => (p.startsWith('http') || p.startsWith('/')) ? p : '/' + p;
     const preloadLinks = [
-        { href: 'assets/images/profile.jpg', as: 'image' },
-        { href: 'assets/documents/Johannes_Bertram_CV.pdf', as: 'document' }
+        { href: toAbs('assets/images/profile.jpg'), as: 'image' },
+        { href: toAbs('assets/documents/Johannes_Bertram_CV.pdf'), as: 'document' }
     ];
     
     preloadLinks.forEach(link => {
         const preloadLink = document.createElement('link');
         preloadLink.rel = 'preload';
-        preloadLink.href = link.href;
+    preloadLink.href = toAbs(link.href);
         preloadLink.as = link.as;
         document.head.appendChild(preloadLink);
     });

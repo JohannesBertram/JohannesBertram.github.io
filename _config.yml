@@ -1,0 +1,15 @@
+title: "Johannes Bertram"
+description: "Machine Learning and Neuroscience Researcher"
+url: "https://johannesbertram.github.io"
+baseurl: ""
+timezone: "Europe/Berlin"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Keep GitHub Pages compatible (no custom plugins needed)
+exclude:
+  - "bin"
+  - "README-dev.md"
+  - "GETTING_STARTED.md"

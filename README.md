@@ -168,17 +168,22 @@ The website is fully responsive with:
 
 ## 🔧 Development
 
-**Local Development:**
-```bash
-# Serve locally (Python)
-python -m http.server 8000
+**Local Development (Jekyll):**
+```zsh
+# One-time setup
+bundle install
 
-# Or with Node.js
-npx http-server
-
-# Or with PHP
-php -S localhost:8000
+# Serve locally with GitHub Pages config
+bundle exec jekyll serve --livereload
+# Open http://localhost:4000
 ```
+
+Alternative (Docker, no Ruby):
+```zsh
+docker run --rm -p 4000:4000 -v "$PWD":/site jekyll/jekyll jekyll serve --livereload --source /site --host 0.0.0.0
+```
+
+Note: Static servers like `python -m http.server` won’t process Liquid/Jekyll, so you’ll see `{% ... %}` in the page and pretty URLs may 404.
 
 **Testing:**
 - Test on multiple browsers and devices
@@ -210,3 +215,28 @@ This project is open source and available under the [MIT License](LICENSE).
 **Created by:** Johannes Bertram  
 **Last Updated:** September 2024  
 **Purpose:** Academic and professional portfolio for ML research positions
+
+## 📝 Blogging (easy, no formatting)
+
+The site is Jekyll-enabled. Write posts as simple Markdown files; styling is automatic.
+
+- Put files in `_posts/` named `YYYY-MM-DD-title.md`.
+- Minimal front matter:
+
+```yaml
+---
+title: "My daily note"
+tags: [notes]
+category: Personal
+---
+
+Your content here in Markdown.
+```
+
+Quick-create from terminal (macOS zsh):
+
+```zsh
+bin/new-post "My daily note" "notes,update" Personal
+```
+
+Then commit and push; GitHub Pages rebuilds automatically.
